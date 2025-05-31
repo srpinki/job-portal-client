@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { Suspense } from "react";
+import Banner from "./Banner";
+import Hotjobs from "./Hotjobs";
 
 const Home = () => {
-    return (
-        <div>
-            This is home
-        </div>
-    );
+  const jobsPromise = fetch("http://localhost:3000/jobs").then((res) =>
+    res.json()
+  );
+
+  return (
+    <div>
+      <Banner></Banner>
+      <Suspense>
+        <Hotjobs jobsPromise={jobsPromise}></Hotjobs>
+      </Suspense>
+    </div>
+  );
 };
 
 export default Home;

@@ -16,7 +16,21 @@ console.log(error);
   }
   const link = (
     <>
-      <NavLink className={"/"}>Home</NavLink>
+      <NavLink to={"/"}>Home</NavLink>
+
+      {/* for applicant. check rols as well */}
+      {
+        user && <NavLink to={"/my-applications"}>My Application</NavLink>
+      }
+
+      {/* for requiter. check rols as well */}
+      {
+        
+        user && <>
+        <NavLink to={"/add-job"}>Add job</NavLink>
+        <NavLink to={"/my-posted-jobs"}>My Posted jobs</NavLink>
+        </>
+      }
     </>
   );
   return (
@@ -50,7 +64,7 @@ console.log(error);
         <a className="btn btn-ghost text-xl">daisyUI</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{link}</ul>
+        <ul className="menu menu-horizontal px-1 gap-5">{link}</ul>
       </div>
       <div className="navbar-end gap-5">
         {user ? (
